@@ -36,7 +36,9 @@ module.exports = {
 				launchWin.show();
 			});
 			ipcMain.on('main ready', ()=> {
-				launchWin.webContents.send('do finish');
+				try{
+					launchWin.webContents.send('do finish');
+				}catch(e){}
 			});
 			ipcMain.on('do finish', ()=> {
 				launchWin.close();
